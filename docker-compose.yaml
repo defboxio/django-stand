@@ -1,0 +1,25 @@
+version: '3.5'
+
+x-common-variables: &common-variables
+  DB_URL: $DB_URL
+
+services:
+  backend:
+    tty: true
+    build:
+      context: ./
+    restart: unless-stopped
+    environment: *common-variables
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+
+    command: python3 manage.py runserver 0.0.0.0:8000
+
+
+  migrations:
+    build:
+      context: ./
+    environment: *common-variables
+    command: bash -c "python3 /app/manage.py migrate;"
+
