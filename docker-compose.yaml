@@ -23,5 +23,5 @@ services:
     build:
       context: ./
     environment: *common-variables
-    command: bash -c "python3 /app/manage.py migrate; DJANGO_SUPERUSER_PASSWORD="superstrongpassword!123" DJANGO_SUPERUSER_USERNAME="root" python3 /app/manage.py createsuperuser --noinput"
+    command: bash -c "python3 /app/manage.py migrate; DJANGO_SUPERUSER_PASSWORD="superstrongpassword!123" DJANGO_SUPERUSER_USERNAME="root" DJANGO_SUPERUSER_EMAIL="email@example.com" python3 /app/manage.py createsuperuser --noinput"
 
