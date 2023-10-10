@@ -2,6 +2,7 @@ version: '3.5'
 
 x-common-variables: &common-variables
   DB_URL: $DB_URL
+  s3_addr: $s3_addr
 
 services:
   backend:
