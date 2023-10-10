@@ -13,7 +13,8 @@ services:
     depends_on:
       migrations:
         condition: service_completed_successfully
-
+    ports:
+      - "8000:8000"
     command: python3 manage.py runserver 0.0.0.0:8000
 
 
@@ -21,5 +22,5 @@ services:
     build:
       context: ./
     environment: *common-variables
-    command: bash -c "python3 /app/manage.py migrate;"
+    command: bash -c "python3 /app/manage.py migrate; DJANGO_SUPERUSER_PASSWORD="superstrongpassword!123" DJANGO_SUPERUSER_USERNAME="root" python3 /app/manage.py createsuperuser --noinput"
 

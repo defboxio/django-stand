@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'defbox_django_stand.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 #DB_URL="postgresql://tg:tg@0.0.0.0:5432/tg"
 
-#DB_URL="postgresql://postgres:new_password1@64.227.29.64:5432/postgres"
+#DB_URL="postgresql://postgres:new_password1@143.244.174.159:5432/postgres"
 DB_URL = os.getenv("DB_URL", )
 db_parsed = urlparse(DB_URL)
 
@@ -137,3 +137,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
+AWS_STORAGE_BUCKET_NAME = "django-bucket"
+AWS_ACCESS_KEY_ID = "ROOTNAME"
+AWS_SECRET_ACCESS_KEY = "CHANGEME123"
+AWS_S3_ENDPOINT_URL = os.getenv("s3_addr")
+AWS_DEFAULT_ACL = None
+#AWS_QUERYSTRING_AUTH = True
+AWS_S3_FILE_OVERWRITE = False
